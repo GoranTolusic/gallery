@@ -56,8 +56,20 @@
     <script>
         function deleteAction(id) {
             event.preventDefault();
-            var deleteUrl = '/admin/deleteImage/' + id;
+            var deleteUrl = '/admin/readMessage/' + id;
             window.location.href = deleteUrl;
+        }
+
+        async function readMessage(id) {
+            var resp = await fetch('/admin/readMessage/' + id, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                method: 'POST'
+            })
+            var data = await resp.json();
+            console.log(data)
         }
 
         function information(id) {
@@ -72,11 +84,12 @@
                 getHidden.setAttribute('hidden', '');
             }
 
-            var isReadEl = document.getElementById('read-'+id)
+            var isReadEl = document.getElementById('read-' + id)
             var isRead = isReadEl.getAttribute('read')
             if (isRead == 'no') {
                 isReadEl.textContent = ''
                 isReadEl.setAttribute('read', 'yes')
+                readMessage(id)
             }
         }
     </script>

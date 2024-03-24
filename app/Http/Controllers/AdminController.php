@@ -95,6 +95,21 @@ class AdminController extends Controller
         return view('admin.messages', ['settings' => $request->settings, 'messages' => $messages]);
     }
 
+    public function deleteMessage($id)
+    {
+        Contact::destroy($id);
+        return redirect()->route('messages');
+    }
+
+    public function readMessage($id) : int
+    {
+        $contact = Contact::find($id);
+        if (!$contact) return 404;
+        $contact->isRead = 'yes';
+        $contact->save();
+        return 200;
+    }
+
     public function addImage(Request $request, AddPictureRequest $addPictureRequest, Picture $picture)
     {
         $validated = $addPictureRequest->validated();
