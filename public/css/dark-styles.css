@@ -1,0 +1,24 @@
+
+body {
+    background-color: #333;
+    color: #fff;
+}
+
+.site-header {
+    background-color: #292929; 
+}
+
+.site-footer {
+    background-color: #292929;
+}
+
+.intro-section h2,
+.services-section h2 {
+    color: #fff;
+}
+
+h3 {
+    color: #fff;
+}
+
+
