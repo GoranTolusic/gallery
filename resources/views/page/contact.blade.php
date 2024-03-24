@@ -52,8 +52,8 @@
                     @csrf
 
                     <div class="form-group">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" required placeholder="Enter your name here">
+                        <label for="name">Subject:</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter subject here">
                     </div>
                     @if ($errors->has('name'))
                         <span class="invalid-feedback" role="alert">

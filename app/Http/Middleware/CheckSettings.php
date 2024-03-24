@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\Settings;
-use Illuminate\Foundation\Inspiring;
+use App\Models\Contact;
  
 class CheckSettings
 {
@@ -19,6 +19,7 @@ class CheckSettings
     {
         $request->settings = Settings::where('label', 'main_label')->first()->toArray();
         $request->settings['is_authorized'] = $request->session()->get('is_authorized');
+        $request->settings['unreadCount'] = Contact::where('isRead', 'no')->count();
         return $next($request);
     }
 }

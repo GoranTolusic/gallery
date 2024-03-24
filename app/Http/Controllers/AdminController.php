@@ -10,14 +10,17 @@ use App\Http\Requests\AddPictureRequest;
 use App\Http\Requests\UpdatePictureRequest;
 use App\Models\Settings;
 use App\Models\Picture;
+use App\Models\Contact;
 use App\Services\PictureService;
+use App\Services\ContactService;
 
 
 class AdminController extends Controller
 {
-    public function __construct(PictureService $service)
+    public function __construct(PictureService $service, ContactService $cService)
     {
         $this->pictureService = $service;
+        $this->contactService = $cService;
     }
 
     public function login(Request $request, LoginRequest $loginRequest)
@@ -86,9 +89,10 @@ class AdminController extends Controller
         return view('admin.imagesPanel', ['settings' => $request->settings, 'pictures' => $pictures]);
     }
 
-    public function messagesPanel()
+    public function messages(Request $request, Contact $contact): View
     {
-
+        $messages = $this->contactService->filter($request, $contact);
+        return view('admin.messages', ['settings' => $request->settings, 'messages' => $messages]);
     }
 
     public function addImage(Request $request, AddPictureRequest $addPictureRequest, Picture $picture)

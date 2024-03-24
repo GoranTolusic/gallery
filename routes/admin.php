@@ -17,3 +17,5 @@ Route::get('deleteImage/{id}', [AdminController::class, 'deleteImage'])->middlew
 Route::post('editImage/{id}', [AdminController::class, 'editImage'])->middleware(IsAdmin::class);
 Route::get('getImage/{id}', [AdminController::class, 'getImage'])->middleware(IsAdmin::class);
 Route::get('imagesPanel', [AdminController::class, 'imagesPanel'])->name('imagesPanel')->middleware(IsAdmin::class);
+
+Route::get('messages', [AdminController::class, 'messages'])->name('messages')->middleware(IsAdmin::class);

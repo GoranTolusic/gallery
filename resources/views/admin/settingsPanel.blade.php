@@ -5,7 +5,6 @@
 @include('layouts.partials.header')
 
     <main class="content">
-
         <section class="services-section">
             <div class="contact-container">
             <h2>Settings</h2>

@@ -9,7 +9,11 @@
                 @if($settings['is_authorized'])
                 <li><a style="color:orange;" href="/admin/settingsPanel">Settings</a></li>
                 <li><a style="color:orange;" href="/admin/imagesPanel">Manage images</a></li>
-                <li><a style="color:orange;" href="/admin/messagePanel">Messages</a></li>
+                <li><a style="color:orange;" href="/admin/messages">Messages
+                @if($settings['unreadCount'])
+                ({{$settings['unreadCount']}})
+                @endif
+                </a></li>
                 <li><a style="color:orange;" href="/admin/logout">Logout</a></li>
                 @endif
             </ul>
