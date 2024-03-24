@@ -145,7 +145,7 @@
 
         function deleteAction(id) {
             event.preventDefault();
-            var deleteUrl = '/admin/deleteImage/' + id; // Replace 'your_delete_url' with the actual URL
+            var deleteUrl = '/admin/deleteImage/' + id;
             window.location.href = deleteUrl;
         }
 

@@ -11,7 +11,7 @@ class ContactService
             $search = $request->keyword;
             $query = $query->where(function ($q) use ($search) {
                 $q->where('name', 'LIKE', '%' . $search . '%')
-                    ->orWhere('description', 'LIKE', '%' . $search . '%')
+                    ->orWhere('message', 'LIKE', '%' . $search . '%')
                     ->orWhere('email', 'LIKE', '%' . $search . '%');
             });
         }
