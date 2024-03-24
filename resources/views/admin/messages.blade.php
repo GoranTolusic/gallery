@@ -69,7 +69,6 @@
                 method: 'POST'
             })
             var data = await resp.json();
-            console.log(data)
         }
 
         function information(id) {
