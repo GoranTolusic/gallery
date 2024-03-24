@@ -54,12 +54,6 @@
     <br>
 
     <script>
-        function deleteAction(id) {
-            event.preventDefault();
-            var deleteUrl = '/admin/readMessage/' + id;
-            window.location.href = deleteUrl;
-        }
-
         async function readMessage(id) {
             var resp = await fetch('/admin/readMessage/' + id, {
                 headers: {
