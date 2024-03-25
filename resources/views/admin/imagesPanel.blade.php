@@ -143,10 +143,21 @@
             reader.readAsDataURL(input.files[0]);
         }
 
+        async function deleteImage(id) {
+            var resp = await fetch('/admin/deleteImage/' + id, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                method: 'DELETE'
+            })
+            var data = await resp.json();
+            if (data == 200) location.reload()
+        }
+
         function deleteAction(id) {
             event.preventDefault();
-            var deleteUrl = '/admin/deleteImage/' + id;
-            window.location.href = deleteUrl;
+            deleteImage(id)
         }
 
         function information(id) {

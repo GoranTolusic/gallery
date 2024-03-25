@@ -125,8 +125,9 @@ class AdminController extends Controller
     public function deleteImage($id)
     {
         $found = $this->pictureService->deletePictureFile($id);
+        if (!$found) return 404;
         $found->delete();
-        return redirect()->route('imagesPanel');
+        return 200;
     }
 
     public function editImage($id, UpdatePictureRequest $updatePictureRequest)

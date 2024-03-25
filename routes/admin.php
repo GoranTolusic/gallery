@@ -12,7 +12,7 @@ Route::get('settingsPanel', [AdminController::class, 'settingsPanel'])->name('se
 Route::post('saveSettings', [AdminController::class, 'saveSettings'])->middleware(IsAdmin::class);
 
 Route::post('addImage', [AdminController::class, 'addImage'])->middleware(IsAdmin::class);
-Route::get('deleteImage/{id}', [AdminController::class, 'deleteImage'])->middleware(IsAdmin::class);
+Route::delete('deleteImage/{id}', [AdminController::class, 'deleteImage'])->middleware(IsAdmin::class);
 Route::post('editImage/{id}', [AdminController::class, 'editImage'])->middleware(IsAdmin::class);
 Route::get('imagesPanel', [AdminController::class, 'imagesPanel'])->name('imagesPanel')->middleware(IsAdmin::class);
 
