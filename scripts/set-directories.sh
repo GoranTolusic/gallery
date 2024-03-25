@@ -1,13 +1,15 @@
 #!/bin/bash
 
-mkdir ../public/background-picture;
-mkdir ../public/images;
-mkdir ../public/profile-picture;
-mkdir ../public/thumbnails;
+OWNER=${whoami}
 
-chmod -R +w ../public/background-picture
-chmod -R +w ../public/images
-chmod -R +w ../public/profile-picture
-chmod -R +w ../public/thumbnails
+sudo mkdir ../public/background-picture;
+sudo mkdir ../public/images;
+sudo mkdir ../public/profile-picture;
+sudo mkdir ../public/thumbnails;
+
+sudo chmod -R +w ../public/background-picture
+sudo chmod -R +w ../public/images
+sudo chmod -R +w ../public/profile-picture
+sudo chmod -R +w ../public/thumbnails
 
 echo "Public directories created.";
