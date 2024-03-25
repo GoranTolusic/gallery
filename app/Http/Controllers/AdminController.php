@@ -60,7 +60,7 @@ class AdminController extends Controller
         if ($profilePicture) {
             $fileName = $profilePicture->getClientOriginalName();
             $file_path = public_path('profile-picture/' . $request->settings['profile_picture']);
-            if (file_exists($file_path)) {
+            if (file_exists($file_path) && $request->settings['profile_picture']) {
                 unlink($file_path);
             }
             $profilePicture->move(public_path('profile-picture'), $fileName);
@@ -71,7 +71,7 @@ class AdminController extends Controller
         if ($backgroundPicture) {
             $fileName = $backgroundPicture->getClientOriginalName();
             $file_path = public_path('background-picture/' . $request->settings['home_banner_picture']);
-            if (file_exists($file_path)) {
+            if (file_exists($file_path) && $request->settings['home_banner_picture']) {
                 unlink($file_path);
             }
             $backgroundPicture->move(public_path('background-picture'), $fileName);
