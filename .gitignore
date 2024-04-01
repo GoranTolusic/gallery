@@ -9,6 +9,7 @@
 /public/thumbnails/*
 /storage/*.key
 /vendor
+todo.txt
 .env
 .env.backup
 .env.production
