@@ -78,6 +78,6 @@ class rebuild extends Command
         Artisan::call('view:clear');
         Artisan::call('route:clear');
 
-        echo "\nDuart installed successfully!\n\nHINT: Don't forget to set up your server permissions and configuration in .env file and config folder for proper work of application!";
+        echo "\nApplication installed successfully!\n\nHINT: Don't forget to set up your server permissions and configuration in .env file and config folder for proper work of application!";
     }
 }
