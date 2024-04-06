@@ -397,7 +397,6 @@ button[class="delete-button"]:hover {
 .container img {
     max-height: auto;
     max-width: auto;
-    border-radius: 50%;
 }
 
 .container-wrap {
