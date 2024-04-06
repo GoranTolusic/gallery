@@ -3,6 +3,11 @@
 @include('layouts.partials.head')
 
 <body>
+    <div id="confirmBox" class="confirm-box">
+        <p>Are you sure?</p>
+        <button id="confirmYes" onclick="confirmYes()">Yes</button>
+        <button id="confirmNo" onclick="confirmNo()">No</button>
+    </div>
     @include('layouts.partials.header')
     <main class="content">
         <section class="services-section">
@@ -133,6 +138,9 @@
     <br>
 
     <script>
+        const confirmBox = document.getElementById('confirmBox');
+        let deleteId;
+
         function previewImage(event, preview) {
             const input = event.target;
             const reader = new FileReader();
@@ -157,7 +165,17 @@
 
         function deleteAction(id) {
             event.preventDefault();
-            deleteImage(id)
+            deleteId = id;
+            confirmBox.style.display = 'block';
+        }
+
+        function confirmYes() {
+            deleteImage(deleteId)
+            confirmBox.style.display = 'none';
+        }
+
+        function confirmNo() {
+            confirmBox.style.display = 'none';
         }
 
         function information(id) {
