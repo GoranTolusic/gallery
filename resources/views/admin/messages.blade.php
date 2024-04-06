@@ -3,6 +3,11 @@
 @include('layouts.partials.head')
 
 <body>
+    <div id="confirmBox" class="confirm-box">
+        <p>Are you sure?</p>
+        <button id="confirmYes" onclick="confirmYes()">Yes</button>
+        <button id="confirmNo" onclick="confirmNo()">No</button>
+    </div>
     @include('layouts.partials.header')
     <main class="content">
         <section class="services-section">
@@ -16,10 +21,10 @@
 
             @foreach($messages as $message)
             <div class="contact-container">
-                <form action="/admin/deleteMessage/{{$message->id}}" method="post" enctype="multipart/form-data">
+                <form action="/admin/deleteMessage/{{$message->id}}" method="post">
                     @csrf
                     <div class="form-group">
-                        <button class="delete-button">Delete</button>
+                        <button class="delete-button" onclick="deleteAction('{{$message->id}}')">Delete</button>
                         <button class="information-button" onclick="information('{{$message->id}}')" id="show-{{$message->id}}">Show Information</button>
                         <strong>Subject:</strong> {{$message->name}}
                         <span style="color:red;" id="read-{{$message->id}}" read="{{$message->isRead}}">
@@ -54,6 +59,9 @@
     <br>
 
     <script>
+        const confirmBox = document.getElementById('confirmBox');
+        let deleteId;
+
         async function readMessage(id) {
             var resp = await fetch('/admin/readMessage/' + id, {
                 headers: {
@@ -84,6 +92,33 @@
                 isReadEl.setAttribute('read', 'yes')
                 readMessage(id)
             }
+        }
+
+        function deleteAction(id) {
+            event.preventDefault();
+            deleteId = id;
+            confirmBox.style.display = 'block';
+        }
+
+        function confirmYes() {
+            deleteMessage(deleteId)
+            confirmBox.style.display = 'none';
+        }
+
+        function confirmNo() {
+            confirmBox.style.display = 'none';
+        }
+
+        async function deleteMessage(id) {
+            var resp = await fetch('/admin/deleteMessage/' + id, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                method: 'POST'
+            })
+            var data = await resp.json();
+            if (data == 200) location.reload()
         }
     </script>
     @include('layouts.partials.footer')

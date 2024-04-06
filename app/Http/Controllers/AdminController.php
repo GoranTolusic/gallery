@@ -98,7 +98,7 @@ class AdminController extends Controller
     public function deleteMessage($id)
     {
         Contact::destroy($id);
-        return redirect()->route('messages');
+        return 200;
     }
 
     public function readMessage($id) : int
